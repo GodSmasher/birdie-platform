@@ -1,0 +1,54 @@
+# dependencies
+node_modules/
+
+# builds & caches
+.next/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.turbo/
+.vercel/
+
+# secrets & local config — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+
+# archives, dumps, logs
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.sql.gz
+*.dump
+*.bak
+*.log
+logs/
+
+# bot artifacts (screenshots may contain customer data)
+automations/portal-bot/artifacts/
+automations/portal-bot/screenshots/
+
+# office documents & media — do not belong in this repo
+*.xlsx
+*.xls
+*.docx
+*.doc
+*.mp4
+*.mov
+
+# editor / OS / tooling
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.claude/

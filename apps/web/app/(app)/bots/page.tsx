@@ -1,0 +1,115 @@
+import Link from 'next/link';
+import { Sidebar } from '@/components/sidebar';
+import { TopBar } from '@/components/topbar';
+import { Pill, Card } from '@/components/ui';
+import { Sparkline } from '@/components/sparkline';
+import { DemoView } from '@/components/birdie-guide';
+import { isDemoMode } from '@/app/lib/demo-mode';
+import { demoBots as bots } from '@/lib/bot-catalog';
+
+const tabs = [
+  ['All', true, '8'],
+  ['CRM', false, ''],
+  ['Projects', false, ''],
+  ['Finance', false, ''],
+  ['Communication', false, ''],
+  ['IoT', false, ''],
+] as const;
+
+export default function BotsPage() {
+  if (isDemoMode()) {
+    return (
+      <>
+        <Sidebar active="bots" />
+        <main className="flex-1 min-w-0 flex flex-col bg-bg">
+          <TopBar title="Bots" subtitle="Automation · Background Tasks · 24/7" />
+          <DemoView message="Your automation bots live here. Once you connect your tools, these bots handle CRM syncing, document filling, dunning, and more — 24/7.">
+            <div className="grid grid-cols-3 gap-4">
+              {[{ name: 'CRM Sync Bot', cat: 'CRM', desc: 'Pulls leads, deals, contacts from your CRM every hour.', status: 'READY' },{ name: 'Document Filler', cat: 'PRJ', desc: 'Auto-fills interconnection forms and permit applications.', status: 'READY' },{ name: 'Dunning Bot', cat: 'FIN', desc: 'Payment reminders. Escalates: reminder, warning, collections.', status: 'READY' },{ name: 'Email Classifier', cat: 'KOM', desc: 'Scans emails, routes: utility, customer, vendor, internal.', status: 'READY' },{ name: 'Fleet Monitor', cat: 'IOT', desc: 'Checks inverter APIs for underperforming systems.', status: 'READY' },{ name: 'Enrichment Bot', cat: 'CRM', desc: 'Fills missing data — utility lookup, AHJ rules, NEC reqs.', status: 'READY' }].map(b => (
+                <Card key={b.name} className="p-5 flex flex-col gap-3 opacity-75">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-surface-2 flex items-center justify-center"><span className="text-accent font-semibold text-[9px] tracking-[0.18em]">{b.cat}</span></div>
+                    <span className="font-semibold text-[13px] text-fg truncate flex-1">{b.name}</span>
+                    <Pill label={b.status} tone="neutral" />
+                  </div>
+                  <p className="text-[11px] text-fg2 leading-[16px]">{b.desc}</p>
+                </Card>
+              ))}
+            </div>
+          </DemoView>
+        </main>
+      </>
+    );
+  }
+  return (
+    <>
+      <Sidebar active="bots" />
+      <main className="flex-1 min-w-0 flex flex-col bg-bg">
+        <TopBar title="Bots" subtitle={`${bots.length} Bots · ${bots.filter(b => b.state === 'success').length} active · Fleet Overview`} />
+        <div className="flex-1 px-8 py-7 flex flex-col gap-5">
+          <div className="flex gap-2">
+            {tabs.map(([n, active, cnt]) => (
+              <button
+                key={n}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${
+                  active ? 'bg-surface-2 text-fg border border-line-2 font-medium' : 'text-fg2 hover:text-fg'
+                }`}
+              >
+                {n}
+                {cnt && (
+                  <span className="px-1.5 py-0.5 rounded-full bg-surface-3 text-fg2 text-[10px] font-medium">
+                    {cnt}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {bots.map((b) => {
+              const sparkColor =
+                b.state === 'success' ? '#4ADE80' : b.state === 'warning' ? '#FBBF24' : b.state === 'error' ? '#F87171' : '#6B7280';
+              return (
+                <Link
+                  key={b.slug}
+                  href={`/bots/${b.slug}`}
+                  className="bg-surface border border-line rounded-xl p-5 flex flex-col gap-3 min-h-[208px] hover:border-line-2 hover:bg-surface-2/40 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-surface-2 flex items-center justify-center">
+                      <span className="text-accent font-semibold text-[9px] tracking-[0.18em]">{b.cat}</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-sm text-fg leading-tight">{b.name}</span>
+                      <span className="text-[11px] text-fg3">{b.conns}</span>
+                    </div>
+                    <div className="ml-auto">
+                      <Pill label={b.pill} tone={b.state} />
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-fg2 leading-[18px] flex-1">{b.desc}</p>
+
+                  <div className="border-t border-line pt-3 flex items-end gap-3">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] text-fg3 tracking-[0.18em] font-semibold">TODAY</span>
+                      <span className="text-base font-semibold text-fg leading-none">{b.runs}</span>
+                    </div>
+                    <div className="ml-auto opacity-80">
+                      <Sparkline data={b.activity24h} color={sparkColor} fill width={120} height={32} />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center text-[11px]">
+                    <span className="text-fg3">Success {b.successRate} · Avg {b.avgDuration}</span>
+                    <span className="ml-auto font-medium text-accent">Details →</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}

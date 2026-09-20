@@ -1,0 +1,20 @@
+/** Sidebar, navigation and shared chrome. */
+export const shell: Record<string, string> = {
+  Overview: 'Übersicht',
+  Acquire: 'Akquise',
+  Deliver: 'Umsetzung',
+  Operate: 'Betrieb',
+  System: 'System',
+  Dashboard: 'Dashboard',
+  Leads: 'Leads',
+  Pipeline: 'Pipeline',
+  Projects: 'Projekte',
+  Interconnection: 'Netzanmeldung',
+  Schedule: 'Einsatzplanung',
+  Inbox: 'Postfach',
+  Reports: 'Berichte',
+  Automations: 'Automatisierungen',
+  Integrations: 'Integrationen',
+  Settings: 'Einstellungen',
+  Language: 'Sprache',
+};

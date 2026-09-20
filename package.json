@@ -1,0 +1,22 @@
+{
+  "name": "birdie-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "birdie — the transparency layer for solar installers. Frontend demo, connector SDK and automations in one repo.",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "automations/portal-bot"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspace apps/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "connectors": "npm run test:connector --workspace packages/connectors --",
+    "connectors:poll": "npm run poll-demo --workspace packages/connectors",
+    "portal-bot": "npm run once --workspace automations/portal-bot"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

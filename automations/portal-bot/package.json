@@ -1,0 +1,20 @@
+{
+  "name": "@birdie/portal-bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Utility portal bot: logs into a grid operator portal, prefills the online application from project data and saves it as a draft (human-in-the-loop). Runs as its own worker.",
+  "scripts": {
+    "dev": "tsx src/runner.ts",
+    "once": "tsx src/runner.ts --once",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}
