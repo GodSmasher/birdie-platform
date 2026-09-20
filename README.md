@@ -2,7 +2,10 @@
 
 > **Status: Development paused pending funding; frontend demo and integration layer complete.**
 
-**Live demo:** hosted link coming soon — until then the full demo runs locally in two commands, with no accounts, no keys and no database:
+**Live demo → [birdie-platform-nine.vercel.app/demo](https://birdie-platform-nine.vercel.app/demo)** · auf Deutsch: [/de/demo](https://birdie-platform-nine.vercel.app/de/demo)
+No login. The hosted demo runs in mock mode with invented data only.
+
+Or run it yourself in two commands — no accounts, no keys, no database:
 
 ```bash
 npm install
