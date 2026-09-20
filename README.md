@@ -2,8 +2,7 @@
 
 > **Status: Development paused pending funding; frontend demo and integration layer complete.**
 
-**Live demo:** <!-- TODO: replace with the deployed URL --> `https://your-birdie-instance.example/demo` · German: `/de/demo`
-**Run it yourself in two commands** — no accounts, no keys, no database:
+**Live demo:** hosted link coming soon — until then the full demo runs locally in two commands, with no accounts, no keys and no database:
 
 ```bash
 npm install
