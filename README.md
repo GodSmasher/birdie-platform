@@ -1,5 +1,7 @@
 # .birdie — the transparency layer for solar installers
 
+[![CI](https://github.com/GodSmasher/birdie-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/GodSmasher/birdie-platform/actions/workflows/ci.yml)
+
 > **Status: Development paused pending funding; frontend demo and integration layer complete.**
 
 **Live demo → [birdie-platform-nine.vercel.app/demo](https://birdie-platform-nine.vercel.app/demo)** · auf Deutsch: [/de/demo](https://birdie-platform-nine.vercel.app/de/demo)
@@ -151,6 +153,11 @@ npm run portal-bot                  # one worker tick in mock mode: 2 drafts, 1 
 ```
 
 The public repository ships a representative subset of portal drivers (one shared portal family and one standalone portal) plus the mock driver. The private implementation covers 18 German grid-operator portals end to end, with another 24 recognised and stubbed. Utility PDF templates are third-party documents and are not redistributed here — drop your own into `apps/web/nb-templates/` to use the form fillers.
+
+## Tests
+
+`npm test` runs the vitest suite across all workspaces (no network, mock transport only).
+Covered: every connector against the mock transport, the polling scheduler, the DATANORM round trip, the portal bot's mock run, the demo i18n dictionaries and mock/demo mode detection. CI runs typecheck, tests and the production build on every push and pull request.
 
 ## Tech stack
 

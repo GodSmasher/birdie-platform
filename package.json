@@ -12,11 +12,15 @@
     "dev": "npm run dev --workspace apps/web",
     "build": "npm run build --workspace apps/web",
     "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
     "connectors": "npm run test:connector --workspace packages/connectors --",
     "connectors:poll": "npm run poll-demo --workspace packages/connectors",
     "portal-bot": "npm run once --workspace automations/portal-bot"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.11"
   }
 }
