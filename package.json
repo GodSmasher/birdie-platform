@@ -15,7 +15,8 @@
     "test": "vitest run",
     "connectors": "npm run test:connector --workspace packages/connectors --",
     "connectors:poll": "npm run poll-demo --workspace packages/connectors",
-    "portal-bot": "npm run once --workspace automations/portal-bot"
+    "portal-bot": "npm run once --workspace automations/portal-bot",
+    "demo:record": "node scripts/record-demo.mjs"
   },
   "engines": {
     "node": ">=20"

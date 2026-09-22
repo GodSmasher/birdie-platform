@@ -7,6 +7,8 @@
 **Live demo → [birdie-platform-nine.vercel.app/demo](https://birdie-platform-nine.vercel.app/demo)** · auf Deutsch: [/de/demo](https://birdie-platform-nine.vercel.app/de/demo)
 No login. The hosted demo runs in mock mode with invented data only.
 
+![birdie demo walkthrough: dashboard, pipeline, interconnection tracking, schedule, German switch, workflows](docs/demo.gif)
+
 Or run it yourself in two commands — no accounts, no keys, no database:
 
 ```bash
@@ -158,6 +160,8 @@ The public repository ships a representative subset of portal drivers (one share
 
 `npm test` runs the vitest suite across all workspaces (no network, mock transport only).
 Covered: every connector against the mock transport, the polling scheduler, the DATANORM round trip, the portal bot's mock run, the demo i18n dictionaries and mock/demo mode detection. CI runs typecheck, tests and the production build on every push and pull request.
+
+The walkthrough GIF above is generated with `npm run demo:record` (Playwright + ffmpeg, see `scripts/record-demo.mjs`).
 
 ## Tech stack
 
