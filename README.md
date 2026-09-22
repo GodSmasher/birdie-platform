@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/GodSmasher/birdie-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/GodSmasher/birdie-platform/actions/workflows/ci.yml)
 
+[![birdie — the transparency layer for solar installers](docs/banner.png)](https://birdie-platform-nine.vercel.app/demo)
+
 > **Status: Development paused pending funding; frontend demo and integration layer complete.**
 
 **Live demo → [birdie-platform-nine.vercel.app/demo](https://birdie-platform-nine.vercel.app/demo)** · auf Deutsch: [/de/demo](https://birdie-platform-nine.vercel.app/de/demo)
